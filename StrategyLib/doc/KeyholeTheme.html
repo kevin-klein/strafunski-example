@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>KeyholeTheme</title><link href="ocean.css" rel="stylesheet" type="text/css" title="Ocean" /><script src="haddock-util.js" type="text/javascript"></script><script type="text/javascript">//<![CDATA[
+window.onload = function () {pageLoad();setSynopsis("mini_KeyholeTheme.html");};
+//]]>
+</script></head><body><div id="package-header"><ul class="links" id="page-menu"><li><a href="source">Source</a></li><li><a href="index.html">Contents</a></li><li><a href="doc-index.html">Index</a></li></ul><p class="caption">StrategyLib</p></div><div id="content"><div id="module-header"><table class="info"><tr><th>Portability</th><td>portable</td></tr><tr><th>Stability</th><td>experimental</td></tr><tr><th>Maintainer</th><td>Ralf Laemmel, Joost Visser</td></tr><tr><th>Safe Haskell</th><td>None</td></tr></table><p class="caption">KeyholeTheme</p></div><div id="table-of-contents"><p class="caption">Contents</p><ul><li><a href="#g:1">Focus
+</a></li><li><a href="#g:2">Listification
+</a></li><li><a href="#g:3">Keyhole versions of basic strategy combinators.
+</a></li></ul></div><div id="description"><p class="caption">Description</p><div class="doc"><p>This module is part of <code>StrategyLib</code>, a library of functional strategy
+ combinators, including combinators for generic traversal. This module
+ defines a number combinators for keyhole operations, i.e. for operations
+ that have ordinary parametric or adhoc polymorhpic types, but employ
+ strategies inside.
+</p></div></div><div id="synopsis"><p id="control.syn" class="caption expander" onclick="toggleSection('syn')">Synopsis</p><ul id="section.syn" class="hide" onclick="toggleSection('syn')"><li class="src short"><a href="#v:selectFocus">selectFocus</a> :: (<a href="TermRep.html#t:Term">TermRep.Term</a> f, <a href="TermRep.html#t:Term">TermRep.Term</a> t) =&gt; (f -&gt; Data.Maybe.Maybe f) -&gt; t -&gt; Data.Maybe.Maybe f</li><li class="src short"><a href="#v:replaceFocus">replaceFocus</a> :: (<a href="TermRep.html#t:Term">TermRep.Term</a> t, <a href="TermRep.html#t:Term">TermRep.Term</a> t') =&gt; (t -&gt; Data.Maybe.Maybe t) -&gt; t' -&gt; Data.Maybe.Maybe t'</li><li class="src short"><a href="#v:deleteFocus">deleteFocus</a> :: (<a href="TermRep.html#t:Term">TermRep.Term</a> f, <a href="TermRep.html#t:Term">TermRep.Term</a> t) =&gt; (f -&gt; Data.Maybe.Maybe f) -&gt; t -&gt; Data.Maybe.Maybe t</li><li class="src short"><a href="#v:selectHost">selectHost</a> :: (<a href="TermRep.html#t:Term">TermRep.Term</a> f, <a href="TermRep.html#t:Term">TermRep.Term</a> h, <a href="TermRep.html#t:Term">TermRep.Term</a> t) =&gt; (f -&gt; Data.Maybe.Maybe f) -&gt; (h -&gt; Data.Maybe.Maybe h) -&gt; t -&gt; Data.Maybe.Maybe h</li><li class="src short"><a href="#v:markHost">markHost</a> :: (<a href="TermRep.html#t:Term">TermRep.Term</a> f, <a href="TermRep.html#t:Term">TermRep.Term</a> h, <a href="TermRep.html#t:Term">TermRep.Term</a> t) =&gt; (f -&gt; GHC.Types.Bool) -&gt; (h -&gt; h) -&gt; t -&gt; Data.Maybe.Maybe t</li><li class="src short"><a href="#v:listify">listify</a> :: (<a href="TermRep.html#t:Term">TermRep.Term</a> x, <a href="TermRep.html#t:Term">TermRep.Term</a> y) =&gt; x -&gt; [y]</li><li class="src short"><a href="#v:strings">strings</a> :: <a href="TermRep.html#t:Term">TermRep.Term</a> x =&gt; x -&gt; [GHC.Base.String]</li><li class="src short"><a href="#v:inj">inj</a> :: (Control.Monad.MonadPlus m, <a href="TermRep.html#t:Term">TermRep.Term</a> x, <a href="TermRep.html#t:Term">TermRep.Term</a> c) =&gt; (c -&gt; m c) -&gt; x -&gt; m x</li></ul></div><div id="interface"><h1 id="g:1">Focus
+</h1><div class="top"><p class="src"><a name="v:selectFocus" class="def">selectFocus</a></p><div class="subs arguments"><p class="caption">Arguments</p><table><tr><td class="src">:: (<a href="TermRep.html#t:Term">TermRep.Term</a> f, <a href="TermRep.html#t:Term">TermRep.Term</a> t)</td><td class="doc empty">&nbsp;</td></tr><tr><td class="src">=&gt; (f -&gt; Data.Maybe.Maybe f)</td><td class="doc"><p>Identify focus
+</p></td></tr><tr><td class="src">-&gt; t</td><td class="doc"><p>Input term
+</p></td></tr><tr><td class="src">-&gt; Data.Maybe.Maybe f</td><td class="doc"><p>Focused term
+</p></td></tr></table></div><div class="doc"><p>Select the identified focus.
+   Fails if no subterm can be selected.
+</p></div></div><div class="top"><p class="src"><a name="v:replaceFocus" class="def">replaceFocus</a> :: (<a href="TermRep.html#t:Term">TermRep.Term</a> t, <a href="TermRep.html#t:Term">TermRep.Term</a> t') =&gt; (t -&gt; Data.Maybe.Maybe t) -&gt; t' -&gt; Data.Maybe.Maybe t'</p><div class="doc"><p>Replace the identified focus.
+   Fails if no subterm can be replaced.
+</p></div></div><div class="top"><p class="src"><a name="v:deleteFocus" class="def">deleteFocus</a></p><div class="subs arguments"><p class="caption">Arguments</p><table><tr><td class="src">:: (<a href="TermRep.html#t:Term">TermRep.Term</a> f, <a href="TermRep.html#t:Term">TermRep.Term</a> t)</td><td class="doc empty">&nbsp;</td></tr><tr><td class="src">=&gt; (f -&gt; Data.Maybe.Maybe f)</td><td class="doc"><p>Identify focus
+</p></td></tr><tr><td class="src">-&gt; t</td><td class="doc"><p>Input term
+</p></td></tr><tr><td class="src">-&gt; Data.Maybe.Maybe t</td><td class="doc"><p>Output term without focused entity
+</p></td></tr></table></div><div class="doc"><p>Delete the focus assuming it is an element in a list. 
+   Fails if no deletion can be performed.
+</p></div></div><div class="top"><p class="src"><a name="v:selectHost" class="def">selectHost</a></p><div class="subs arguments"><p class="caption">Arguments</p><table><tr><td class="src">:: (<a href="TermRep.html#t:Term">TermRep.Term</a> f, <a href="TermRep.html#t:Term">TermRep.Term</a> h, <a href="TermRep.html#t:Term">TermRep.Term</a> t)</td><td class="doc empty">&nbsp;</td></tr><tr><td class="src">=&gt; (f -&gt; Data.Maybe.Maybe f)</td><td class="doc"><p>Get focus
+</p></td></tr><tr><td class="src">-&gt; (h -&gt; Data.Maybe.Maybe h)</td><td class="doc"><p>Get host
+</p></td></tr><tr><td class="src">-&gt; t</td><td class="doc"><p>Input term
+</p></td></tr><tr><td class="src">-&gt; Data.Maybe.Maybe h</td><td class="doc"><p>Located host
+</p></td></tr></table></div><div class="doc"><p>Find the host of the focused entity, i.e. a superterm of the
+   focussed subterm.
+</p></div></div><div class="top"><p class="src"><a name="v:markHost" class="def">markHost</a></p><div class="subs arguments"><p class="caption">Arguments</p><table><tr><td class="src">:: (<a href="TermRep.html#t:Term">TermRep.Term</a> f, <a href="TermRep.html#t:Term">TermRep.Term</a> h, <a href="TermRep.html#t:Term">TermRep.Term</a> t)</td><td class="doc empty">&nbsp;</td></tr><tr><td class="src">=&gt; (f -&gt; GHC.Types.Bool)</td><td class="doc"><p>Test focus
+</p></td></tr><tr><td class="src">-&gt; (h -&gt; h)</td><td class="doc"><p>Wrap host
+</p></td></tr><tr><td class="src">-&gt; t</td><td class="doc"><p>Input term
+</p></td></tr><tr><td class="src">-&gt; Data.Maybe.Maybe t</td><td class="doc"><p>Output term
+</p></td></tr></table></div></div><h1 id="g:2">Listification
+</h1><div class="top"><p class="src"><a name="v:listify" class="def">listify</a> :: (<a href="TermRep.html#t:Term">TermRep.Term</a> x, <a href="TermRep.html#t:Term">TermRep.Term</a> y) =&gt; x -&gt; [y]</p><div class="doc"><p>Put all nodes of a certain type into a list.
+</p></div></div><div class="top"><p class="src"><a name="v:strings" class="def">strings</a> :: <a href="TermRep.html#t:Term">TermRep.Term</a> x =&gt; x -&gt; [GHC.Base.String]</p><div class="doc"><p>Put all nodes of type <code>GHC.Base.String</code> into a list. This is a type-specialization
+   of <code><a href="KeyholeTheme.html#v:listify">KeyholeTheme.listify</a></code>.
+</p></div></div><h1 id="g:3">Keyhole versions of basic strategy combinators.
+</h1><div class="top"><p class="src"><a name="v:inj" class="def">inj</a> :: (Control.Monad.MonadPlus m, <a href="TermRep.html#t:Term">TermRep.Term</a> x, <a href="TermRep.html#t:Term">TermRep.Term</a> c) =&gt; (c -&gt; m c) -&gt; x -&gt; m x</p><div class="doc"><p>Apply the argument function to the unique subterm of the input term.
+   Fail if the input term has more subterms or if the subterm is not of
+   the appropriate type. This is a keyhole version of the traversal
+   combinator <code><a href="StrategyPrimitives.html#v:injTP">StrategyPrimitives.injTP</a></code>
+</p></div></div></div></div><div id="footer"><p>Produced by <a href="http://www.haskell.org/haddock/">Haddock</a> version 2.11.0</p></div></body></html>
